@@ -1,4 +1,5 @@
 R_JS = r.js
+YAML_TO_JSON = js-yaml -j $(1) >$(2)
 
 all: build
 
@@ -11,6 +12,7 @@ build: | dist
 
 dist:
 	$(R_JS) -o build.js
+	$(call YAML_TO_JSON, manifest.yml, $@/manifest.webapp)
 
 clean:
 	rm -rf dist/ application.zip
