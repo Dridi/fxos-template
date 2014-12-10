@@ -1,7 +1,6 @@
 {
-  appDir: '.',
+  appDir: 'src',
   baseUrl: 'js',
-  mainConfigFile: 'js/config/require.js',
   dir: 'dist',
   insertRequire: ['app'],
   name: 'app',
@@ -9,7 +8,7 @@
     'libs/alameda',
     'config/require',
   ],
-  fileExclusionRegExp: /build|Makefile|\.(swp|jslike)$/,
+  fileExclusionRegExp: /\.swp$/,
   normalizeDirDefines: 'all',
   optimize: 'none',
   keepBuildDir: true,

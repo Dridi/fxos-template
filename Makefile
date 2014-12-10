@@ -5,7 +5,7 @@ all: build
 build: | dist
 
 dist:
-	$(R_JS) -o build.jslike
+	$(R_JS) -o build.js
 
 clean:
 	rm -rf dist/
