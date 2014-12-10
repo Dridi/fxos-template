@@ -3,18 +3,20 @@ YAML_TO_JSON = js-yaml -j $(1) >$(2)
 
 all: build
 
-package: application.zip
+build: application.zip
 
-application.zip: | dist
-	cd dist && zip -r $(PWD)/$@ .
+application.zip: dist dist/manifest.webapp
+	cd $< && zip -qr $(PWD)/$@ .
 
-build: | dist
+dist/manifest.webapp: manifest.yml dist
+	$(call YAML_TO_JSON, $<, $@)
 
-dist:
-	$(R_JS) -o build.js
-	$(call YAML_TO_JSON, manifest.yml, $@/manifest.webapp)
+dist: build.js $(shell find src/ -type f)
+	$(R_JS) -o $<
+	@touch $@
+	@rm -f dist/build.txt
 
 clean:
 	rm -rf dist/ application.zip
 
-.PHONY: dist clean
+.PHONY: clean
