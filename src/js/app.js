@@ -1,14 +1,12 @@
 define(function(require) {
 'use strict';
 
-window.addEventListener('DOMContentLoaded', function() {
-  var translate = navigator.mozL10n.get;
+var l10n = require('libs/l10n') || navigator.mozL10n;
 
-  navigator.mozL10n.once(function start() {
-    var message = document.getElementById('message');
-    message.textContent = translate('message');
-  });
 
+l10n.once(function start() {
+  var message = document.getElementById('message');
+  message.textContent = l10n.get('message');
 });
 
 });
