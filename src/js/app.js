@@ -1,12 +1,13 @@
 define(function(require) {
 'use strict';
 
-var l10n = require('libs/l10n') || navigator.mozL10n;
+var l10n = require('libs/l10n');
+var webcomponents = require('libs/webcomponents');
+var polymer = require('libs/polymer');
 
-
-l10n.once(function start() {
-  var message = document.getElementById('message');
-  message.textContent = l10n.get('message');
+Polymer.import(['/views/hello.tpl'], function() {
+  var hello = document.createElement('x-hello');
+  document.body.appendChild(hello);
 });
 
 });
