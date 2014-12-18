@@ -2,11 +2,11 @@ define(function(require) {
 'use strict';
 
 var l10n = require('libs/l10n') || navigator.mozL10n;
+var poly = require('libs/polyfills');
+var xtag = require('libs/x-tag-core');
 
+var hello = require('views/hello');
 
-l10n.once(function start() {
-  var message = document.getElementById('message');
-  message.textContent = l10n.get('message');
-});
+document.body.appendChild(hello());
 
 });
